@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-api-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - image: rajgaikwad1998/express-service:v0.0.1
+        imagePullPolicy: Always
+        name: express-api-service
+        envFrom:
+        - configMapRef:
+            name: express-backend-map                                                                                                                                                                         
+        ports:
+        - containerPort: 5000
